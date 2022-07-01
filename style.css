@@ -1,11 +1,192 @@
-.content__board{
+body {
+   margin: 0;
+   background-color: rgb(230, 230, 230);
+   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+/* HEADER */
+.header {
+   padding: 40px 0;
+   text-align: center;
+}
+.header__title {
+   margin: 0;
+   font-family: 'Titan One', cursive;
+   font-size: 64px;
+   color: #666;
+}
+/* CONTENT */
+.content {
+}
+.content__board {
    display: flex;
    flex-wrap: wrap;
-   width: 900px;
-   height: 900px;
-   border: 10px solid #000;
+   width: 600px;
+   height: 600px;
+   border: 6px solid rgb(75, 74, 74);
+   margin: 0 auto;
+   box-shadow: 0 0 20px rgb(135, 134, 134);
+   position: relative;
 }
-.content__pixel{
-   background-color: red;
+.content__pixel {
+   background-color: #fff;
    flex: 1 0 6.25%;
+}
+.content__size {
+   width: 300px;
+   margin: 15px auto 0;
+   position: relative;
+}
+.content__size:before {
+   content: '1';
+   font-size: 20px;
+   color: rgb(75, 74, 74);
+   position: absolute;
+   left: 3px;
+   bottom: 5px;
+}
+.content__size:after {
+   content: '100';
+   font-size: 20px;
+   color: rgb(75, 74, 74);
+   position: absolute;
+   right: 3px;
+   bottom: 5px;
+}
+.content__slider{
+   -webkit-appearance: none;
+   appearance: none;
+   width: 100%;
+   height: 15px;
+   background: linear-gradient(90deg, rgb(160, 160, 160) 16%, rgb(230, 230, 230) 16%);
+   outline: none;
+   opacity: 0.7;
+   -webkit-transition: 02s;
+   transition: opacity 0.2s;
+   border-radius: 12px;
+   box-shadow: 0 0 10px rgb(135, 134, 134);
+}
+.content__slider:hover {
+   opacity: 1;
+}
+.content__slider::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   appearance: none;
+   width: 30px;
+   height: 30px;
+   background: #fff;
+   border-radius: 50%;
+   cursor: pointer;
+}
+.content__slider::-moz-range-thumb {
+   width: 30px;
+   height: 30px;
+   background: #fff;
+   border-radius: 50%;
+   cursor: pointer;
+}
+.content__value {
+   font-size: 28px;
+   text-align: center;
+   color: rgb(75, 74, 74);
+}
+.content__settings {
+   position: absolute;
+   top: 50%;
+   left: -350px;
+   transform: translateY(-50%);
+   padding: 40px 70px;
+   background-color: rgb(93, 93, 93);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   border-radius: 20px;
+   color: rgb(230, 230, 230);
+}
+.btn{
+   width: 140px;
+   padding: 10px 0;
+   background-color: rgb(68, 66, 66);
+   border-radius: 7px;
+   transition: all .15s ease;
+   position: relative;
+   cursor: pointer;
+}
+.btn:hover {
+   transform: scale(1.05);
+}
+.btn.active:hover {
+   transform: scale(1);
+}
+.btn.active:after {
+   content: '';
+   position: absolute;
+   left: -15px;
+   top: 50%;
+   transform: translateY(-50%); 
+   width: 5px;
+   height: 5px;
+   border-radius: 50%;
+   background-color: rgb(230, 230, 230);
+}
+.content__color {
+   position: relative;
+   padding: 0px 0px 20px 0px;
+}
+.content__color:after {
+   content: '';
+   width: 80px;
+   height: 1px;
+   background-color: rgb(230, 230, 230);
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   transform: translateX(-50%);
+}
+.content__title {
+   font-size: 24px;
+   margin: 0px 0px 10px 0px;
+}
+.content__color-btn {
+   width: 75px;
+   height: 75px;
+   background-color: rgb(191, 190, 190);
+   border-radius: 15px;
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.322);
+   display: inline-block;
+   transition: all .15s ease;
+   cursor: pointer;
+}
+.content__color-btn:hover {
+   transform: scale(1.05);
+}
+.content__color-modes {
+   padding: 20px 0;
+   position: relative;
+}
+.content__color-modes:after {
+   content: '';
+   width: 80px;
+   height: 1px;
+   background-color: rgb(230, 230, 230);
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   transform: translateX(-50%);
+}
+.content__color-mode {
+   margin: 0px 0px 10px 0px;
+}
+.content__rainbow-mode {
+   background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, purple);
+   color: #000;
+   font-weight: bold;
+}
+.content__clear-modes {
+   padding: 20px 0px 0px 0px;
+}
+.content__eraser {
+   margin: 0px 0px 10px 0px;
+}
+.content__clear {
 }

@@ -6,6 +6,9 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Etch-A-Sketch</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,8 +17,26 @@
       <h1 class="header__title">Etch-A-Sketch</h1>
    </header>
    <div class="content">
-      <div class="content__board"></div>
-      <div class="content__settings"></div>
+      <div class="content__board">
+         <div class="content__settings">
+            <div class="content__color">
+               <div class="content__title">Choose a color</div>
+               <div class="content__color-btn"></div>
+            </div>
+            <div class="content__color-modes">
+               <div class="content__color-mode btn active">Color mode</div>
+               <div class="content__rainbow-mode btn">Rainbow mode</div>
+            </div>
+            <div class="content__clear-modes">
+               <div class="content__eraser btn">Eraser</div>
+               <div class="content__clear btn">Clear</div>
+            </div>
+         </div>
+      </div>
+      <div class="content__size">
+         <input type="range" min="1" max="100" value="16" id="range" class="content__slider">
+         <div id="value" class="content__value"></div>
+      </div>
    </div>
 
    <script src="script.js"></script>

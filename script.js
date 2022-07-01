@@ -7,3 +7,17 @@ for (let i = 0; i < 16; i++) {
       board.appendChild(pixel);
    }
 }
+
+const slider = document.getElementById('range');
+const output = document.getElementById('value');
+
+output.textContent = `${slider.value} x ${slider.value}`;
+
+slider.oninput = () => output.innerHTML = `${slider.value} x ${slider.value}`;
+
+slider.addEventListener('mousemove', function() {
+   const x = slider.value;
+   const color = 'linear-gradient(90deg, rgb(160, 160, 160)' + x +
+   '%, rgb(230, 230, 230)' + x + '%)';
+   slider.style.background = color;
+});
