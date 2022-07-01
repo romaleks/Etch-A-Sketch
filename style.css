@@ -1,0 +1,11 @@
+.content__board{
+   display: flex;
+   flex-wrap: wrap;
+   width: 900px;
+   height: 900px;
+   border: 10px solid #000;
+}
+.content__pixel{
+   background-color: red;
+   flex: 1 0 6.25%;
+}
