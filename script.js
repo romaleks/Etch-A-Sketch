@@ -3,6 +3,9 @@ for (let i = 0; i < 16 * 16; i++) {
    const pixel = document.createElement('div');
    pixel.className = 'content__pixel';
    board.appendChild(pixel);
+   
+   pixel.addEventListener('mouseover', changeColor);
+   pixel.addEventListener('mousedown', changeColor);
 }  //generate initial 16x16 board
 
 const slider = document.getElementById('range');
@@ -15,6 +18,9 @@ slider.addEventListener('mouseup', function () {
       pixel.className = 'content__pixel';
       pixel.style.cssText = `flex: 1 0 ${1 / slider.value * 100}%;`;
       board.appendChild(pixel);
+
+      pixel.addEventListener('mouseover', changeColor);
+      pixel.addEventListener('mousedown', changeColor);
    }
 });  //change board's size with slider
 
@@ -23,7 +29,7 @@ document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
 function changeColor(e) {
-   if (e.type === 'mouseover' && !mouseDown) return
+   if (e.type === 'mouseover' && !mouseDown) return;
    const selectedColor = document.querySelector('.content__color-btn').value;
    this.style.backgroundColor = selectedColor;
 }
