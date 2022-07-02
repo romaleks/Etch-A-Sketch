@@ -62,6 +62,8 @@ function changeColor(e) {
          ${Math.floor(Math.random() * 255)},
          ${Math.floor(Math.random() * 255)})`;
       this.style.backgroundColor = selectedColor;
+   } else {
+      this.style.backgroundColor = '#fff';
    }
 }
 
