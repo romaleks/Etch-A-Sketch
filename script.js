@@ -3,7 +3,7 @@ for (let i = 0; i < 16 * 16; i++) {
    const pixel = document.createElement('div');
    pixel.className = 'content__pixel';
    board.appendChild(pixel);
-   
+
    pixel.addEventListener('mouseover', changeColor);
    pixel.addEventListener('mousedown', changeColor);
 }  //generate initial 16x16 board
@@ -28,10 +28,41 @@ let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
+const colorBtn = document.querySelector('.content__color-mode');
+const rainbowBtn = document.querySelector('.content__rainbow-mode');
+const eraserBtn = document.querySelector('.content__eraser');
+let currentMode = 'color';
+
+colorBtn.onclick = function () {
+   currentMode = 'color';
+   rainbowBtn.classList.remove('active')
+   eraserBtn.classList.remove('active')
+   colorBtn.classList.add('active');
+}  //set current button-mode to color and add active class on button 
+rainbowBtn.onclick = function () {
+   currentMode = 'rainbow';
+   colorBtn.classList.remove('active')
+   eraserBtn.classList.remove('active')
+   rainbowBtn.classList.add('active');
+}  //set current button-mode to rainbow and add active class on button 
+eraserBtn.onclick = function () {
+   currentMode = 'eraser';
+   colorBtn.classList.remove('active')
+   rainbowBtn.classList.remove('active')
+   eraserBtn.classList.add('active');
+}  //set current button-mode to eraser and add active class on button 
+
 function changeColor(e) {
    if (e.type === 'mouseover' && !mouseDown) return;
-   const selectedColor = document.querySelector('.content__color-btn').value;
-   this.style.backgroundColor = selectedColor;
+   if (currentMode === 'color') {
+      const selectedColor = document.querySelector('.content__color-btn').value;
+      this.style.backgroundColor = selectedColor;
+   } else if (currentMode === 'rainbow') {
+      const selectedColor =`rgb(${Math.floor(Math.random() * 255)},
+         ${Math.floor(Math.random() * 255)},
+         ${Math.floor(Math.random() * 255)})`;
+      this.style.backgroundColor = selectedColor;
+   }
 }
 
 output.textContent = `${slider.value} x ${slider.value}`;  //display initial size of board
@@ -41,16 +72,6 @@ slider.oninput = () => output.innerHTML = `${slider.value} x ${slider.value}`;  
 slider.addEventListener('mousemove', function() {
    const x = slider.value;
    const color = 'linear-gradient(90deg, rgb(160, 160, 160)' + x / 64 * 100 +
-   '%, rgb(230, 230, 230)' + x / 64 * 100 + '%)';
+      '%, rgb(230, 230, 230)' + x / 64 * 100 + '%)';
    slider.style.background = color;
 });  //move slider's background in real time
-
-
-const buttons = document.querySelectorAll('.btn')
-
-buttons.forEach(function(button) {
-   button.addEventListener('click', function() {
-      buttons.forEach((button) => button.classList.remove('active'));
-      button.classList.add('active');
-   });
-});  //switches active buttons
