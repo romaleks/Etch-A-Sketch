@@ -18,6 +18,16 @@ slider.addEventListener('mouseup', function () {
    }
 });  //change board's size with slider
 
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
+function changeColor(e) {
+   if (e.type === 'mouseover' && !mouseDown) return
+   const selectedColor = document.querySelector('.content__color-btn').value;
+   this.style.backgroundColor = selectedColor;
+}
+
 output.textContent = `${slider.value} x ${slider.value}`;  //display initial size of board
 
 slider.oninput = () => output.innerHTML = `${slider.value} x ${slider.value}`;  //display board's size in real time
