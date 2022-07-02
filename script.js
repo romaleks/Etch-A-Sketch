@@ -1,12 +1,34 @@
-const board = document.querySelector('.content__board');
+const board = document.querySelector('.content__pixels');
+for (let i = 0; i < 16 * 16; i++) {
+   const pixel = document.createElement('div');
+   pixel.className = 'content__pixel';
+   board.appendChild(pixel);
+}  //generate initial 16x16 board
 
-for (let i = 0; i < 16; i++) {
-   for (let j = 0; j < 16; j++) {
+const slider = document.getElementById('range');
+const output = document.getElementById('value');
+
+slider.addEventListener('mouseup', function () {
+   board.innerHTML = '';
+   for (let i = 0; i < slider.value * slider.value; i++) {
       const pixel = document.createElement('div');
       pixel.className = 'content__pixel';
+      pixel.style.cssText = `flex: 1 0 ${1 / slider.value * 100}%;`;
       board.appendChild(pixel);
    }
-}
+});  //change board's size with slider
+
+output.textContent = `${slider.value} x ${slider.value}`;  //display initial size of board
+
+slider.oninput = () => output.innerHTML = `${slider.value} x ${slider.value}`;  //display board's size in real time
+
+slider.addEventListener('mousemove', function() {
+   const x = slider.value;
+   const color = 'linear-gradient(90deg, rgb(160, 160, 160)' + x / 64 * 100 +
+   '%, rgb(230, 230, 230)' + x / 64 * 100 + '%)';
+   slider.style.background = color;
+});  //move slider's background in real time
+
 
 const buttons = document.querySelectorAll('.btn')
 
@@ -15,18 +37,4 @@ buttons.forEach(function(button) {
       buttons.forEach((button) => button.classList.remove('active'));
       button.classList.add('active');
    });
-});
-
-const slider = document.getElementById('range');
-const output = document.getElementById('value');
-
-output.textContent = `${slider.value} x ${slider.value}`;
-
-slider.oninput = () => output.innerHTML = `${slider.value} x ${slider.value}`;
-
-slider.addEventListener('mousemove', function() {
-   const x = slider.value;
-   const color = 'linear-gradient(90deg, rgb(160, 160, 160)' + x +
-   '%, rgb(230, 230, 230)' + x + '%)';
-   slider.style.background = color;
-});
+});  //switches active buttons
