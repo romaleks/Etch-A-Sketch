@@ -8,6 +8,15 @@ for (let i = 0; i < 16; i++) {
    }
 }
 
+const buttons = document.querySelectorAll('.btn')
+
+buttons.forEach(function(button) {
+   button.addEventListener('click', function() {
+      buttons.forEach((button) => button.classList.remove('active'));
+      button.classList.add('active');
+   });
+});
+
 const slider = document.getElementById('range');
 const output = document.getElementById('value');
 
