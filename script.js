@@ -31,6 +31,7 @@ document.body.onmouseup = () => (mouseDown = false)
 const colorBtn = document.querySelector('.content__color-mode');
 const rainbowBtn = document.querySelector('.content__rainbow-mode');
 const eraserBtn = document.querySelector('.content__eraser');
+const clearBtn = document.querySelector('.content__clear')
 let currentMode = 'color';
 
 colorBtn.onclick = function () {
@@ -51,6 +52,10 @@ eraserBtn.onclick = function () {
    rainbowBtn.classList.remove('active')
    eraserBtn.classList.add('active');
 }  //set current button-mode to eraser and add active class on button 
+clearBtn.onclick = function () {
+   const pixels = document.querySelectorAll('.content__pixel');
+   pixels.forEach((pixel) => pixel.style.backgroundColor = '#fff');
+} 
 
 function changeColor(e) {
    if (e.type === 'mouseover' && !mouseDown) return;
