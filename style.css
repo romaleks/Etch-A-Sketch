@@ -33,6 +33,7 @@ body {
 .content__pixel {
    background-color: #fff;
    flex: 1 0 6.25%;
+   user-select: none;
 }
 .content__size {
    width: 300px;
